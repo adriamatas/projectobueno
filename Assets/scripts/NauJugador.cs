@@ -16,7 +16,7 @@ public class Naujugador : MonoBehaviour
         float direccioIndicadaX = Input.GetAxisRaw("Horizontal");
         float direccioIndicadaY = Input.GetAxisRaw("Vertical");
         //Debug.Log("X: " + direccioIndicadaX + " - Y: " + direccioIndicadaY);
-        Vector2 direccioindicada = new Vector2(direccioIndicadaX, direccioIndicadaY);
+        Vector2 direccioindicada = new Vector2(direccioIndicadaX, direccioIndicadaY).normalized;
 
         Vector2 novaPos = transform.position; // pos actual de la nau 
         novaPos = novaPos + direccioindicada * _vel * Time.deltaTime;
