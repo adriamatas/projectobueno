@@ -4,7 +4,7 @@ public class Naujugador : MonoBehaviour
 {
     private float _vel;
 
-    private Vector2 minpantalla, maxPantalla;
+    private Vector2 minPantalla, maxPantalla;
 
     public object ViewsportToWorldPoint { get; private set; }
 
@@ -13,8 +13,19 @@ public class Naujugador : MonoBehaviour
     {
         _vel = 8f;
 
-        minPantalla = Camera.main.ViewsportToWorldPoint(new Vector2(0, 0));
-        maxPantalla = Camera.main.ViewsportToWorldPoint(new Vector2(1, 1));
+        minPantalla = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
+        maxPantalla = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
+
+        float meitatMidaimatgeX = GetComponent<SpriteRenderer>().sprite.bounds.size.x * transform.localScale.x / 2;
+        float meitatMidaimatgeY = GetComponent<SpriteRenderer>().sprite.bounds.size.y * transform.localScale.y / 2;
+
+
+        minPantalla.x = minPantalla.x +  meitatMidaimatgeX;
+        maxPantalla.x = maxPantalla.x -  meitatMidaimatgeX;
+        minPantalla.y +=  meitatMidaimatgeY;
+        maxPantalla.y -=  meitatMidaimatgeY;
+
+
 
     }
 
@@ -31,8 +42,8 @@ public class Naujugador : MonoBehaviour
         // Debug.Log(Time.deltaTime);
 
 
-        novaPos.x = Mathf.Clamp (novaPos.x, minpantalla.x, maxPantalla.x);
-        novaPos.y = Mathf.Clamp(novaPos.y, minpantalla.y, maxPantalla.y);
+        novaPos.x = Mathf.Clamp (novaPos.x, minPantalla.x, maxPantalla.x);
+        novaPos.y = Mathf.Clamp(novaPos.y, minPantalla.y, maxPantalla.y);
 
         transform.position = novaPos;
 
