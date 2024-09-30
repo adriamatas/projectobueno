@@ -6,7 +6,9 @@ public class Naujugador : MonoBehaviour
 
     private Vector2 minPantalla, maxPantalla;
 
-    public object ViewsportToWorldPoint { get; private set; }
+    [SerializeField] private GameObject prefabProyectil;
+   
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,10 +22,10 @@ public class Naujugador : MonoBehaviour
         float meitatMidaimatgeY = GetComponent<SpriteRenderer>().sprite.bounds.size.y * transform.localScale.y / 2;
 
 
-        minPantalla.x = minPantalla.x +  meitatMidaimatgeX;
-        maxPantalla.x = maxPantalla.x -  meitatMidaimatgeX;
-        minPantalla.y +=  meitatMidaimatgeY;
-        maxPantalla.y -=  meitatMidaimatgeY;
+        minPantalla.x = minPantalla.x + meitatMidaimatgeX;
+        maxPantalla.x = maxPantalla.x - meitatMidaimatgeX;
+        minPantalla.y += meitatMidaimatgeY;
+        maxPantalla.y -= meitatMidaimatgeY;
 
 
 
@@ -31,6 +33,26 @@ public class Naujugador : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        MoureNau();
+        DispararProyectil();
+
+    }
+
+    private void DispararProyectil()
+    { 
+        if (Input.GetKeyDown(name: "space"))
+        {
+           GameObject proyectil = Instantiate(prefabProyectil);
+            proyectil.transform.position = transform.position;
+        }
+    }
+
+
+
+
+
+    private void MoureNau()
     {
         float direccioIndicadaX = Input.GetAxisRaw("Horizontal");
         float direccioIndicadaY = Input.GetAxisRaw("Vertical");
@@ -42,10 +64,11 @@ public class Naujugador : MonoBehaviour
         // Debug.Log(Time.deltaTime);
 
 
-        novaPos.x = Mathf.Clamp (novaPos.x, minPantalla.x, maxPantalla.x);
+        novaPos.x = Mathf.Clamp(novaPos.x, minPantalla.x, maxPantalla.x);
         novaPos.y = Mathf.Clamp(novaPos.y, minPantalla.y, maxPantalla.y);
 
         transform.position = novaPos;
 
     }
+
 }
