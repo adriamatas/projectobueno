@@ -23,7 +23,7 @@ public class ProyectilJugador : MonoBehaviour
 
         if (transform.position.y > maxPantalla.y)
         {
-            Destroy(gameObject);
+            Destroy(gameObject); 
         }
     }
 }
