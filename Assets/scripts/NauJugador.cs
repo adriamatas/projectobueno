@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Naujugador : MonoBehaviour
@@ -7,7 +9,8 @@ public class Naujugador : MonoBehaviour
     private Vector2 minPantalla, maxPantalla;
 
     [SerializeField] private GameObject prefabProyectil;
-   
+    [SerializeField] private GameObject prefabExplosio;
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -49,9 +52,6 @@ public class Naujugador : MonoBehaviour
     }
 
 
-
-
-
     private void MoureNau()
     {
         float direccioIndicadaX = Input.GetAxisRaw("Horizontal");
@@ -70,5 +70,17 @@ public class Naujugador : MonoBehaviour
         transform.position = novaPos;
 
     }
+
+    private void OnTriggerEnter2D(Collider2D objecteTocat)
+    {
+        Debug.Log("hola");
+        if (objecteTocat.tag == "Numero")
+        {
+            GameObject explosio = Instantiate(prefabExplosio);
+            explosio.transform.position = transform.position;
+            Destroy(gameObject);
+        }
+    }
+    
 
 }
