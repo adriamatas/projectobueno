@@ -8,7 +8,7 @@ public class GeneradorNumeros : MonoBehaviour
     {
         InvokeRepeating("GenerarNumero", 1f, 2f);  
     }
-    privatevoid GenerarNumero()
+    private void GenerarNumero()
     {
 
     }

@@ -85,7 +85,7 @@ SpriteRenderer:
   m_Size: {x: 0.98, y: 0.98}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &2699244111537408732
@@ -100,3 +100,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27bfaaf518c14cc46a89d69d6a23786b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  arraySpritesNumeros:
+  - {fileID: 5259537818300619816, guid: a40b7dcf2ab17304b896c3a76f1689fe, type: 3}
+  - {fileID: -2271934500137294160, guid: cdfc4138acad0ca41a4cd60d997a566a, type: 3}
+  - {fileID: 1573286664679584051, guid: 6f484582f523d9b44b2f4a9941565ec3, type: 3}
+  - {fileID: 1227033178844725410, guid: 147431a32e0774a4baa6d9fd026536a9, type: 3}
+  - {fileID: -6003743763935253795, guid: c657811c822f7804a92173868a9e75c5, type: 3}
+  - {fileID: 3388483236600775581, guid: dcb439220e41438468e81f80297751e0, type: 3}
+  - {fileID: -6118349367493628627, guid: dc34656d4d5e51449b858ae59199dc57, type: 3}
+  - {fileID: 5977155667320475405, guid: 7f21a27659bbba34888fd02bcd00160f, type: 3}
+  - {fileID: -2298101308298105017, guid: a78090cacbcb1e244a7bd3058cf5d85d, type: 3}

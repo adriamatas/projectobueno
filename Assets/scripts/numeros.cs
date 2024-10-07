@@ -4,13 +4,20 @@ public class numeros : MonoBehaviour
 {
     private float vel;
     private  Vector2 minPantalla;
+
+    [SerializeField] private Sprite[] arraySpritesNumeros = new Sprite[9];
     // Start is called once before the first execution of Update after the MonoBehaviour is create
     // d
+
+    private int ValorNumero;
 
     void Start()
     {
         vel = 3f;
         minPantalla = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
+
+        System.Random numAleatori = new System.Random();
+        ValorNumero = numAleatori.Next(1, 9);
     }
 
     // Update is called once per frame
