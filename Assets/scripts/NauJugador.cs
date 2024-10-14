@@ -1,6 +1,7 @@
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Naujugador : MonoBehaviour
 {
@@ -11,7 +12,11 @@ public class Naujugador : MonoBehaviour
     [SerializeField] private GameObject prefabProyectil;
     [SerializeField] private GameObject prefabExplosio;
 
+    private int videsNau;
 
+    [SerializeField] TMPro.TextMeshProUGUI textvidesNau;
+
+    public string PantallaResultat { get; private set; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,6 +35,7 @@ public class Naujugador : MonoBehaviour
         minPantalla.y += meitatMidaimatgeY;
         maxPantalla.y -= meitatMidaimatgeY;
 
+        videsNau = 3;
 
 
     }
@@ -43,10 +49,10 @@ public class Naujugador : MonoBehaviour
     }
 
     private void DispararProyectil()
-    { 
+    {
         if (Input.GetKeyDown(name: "space"))
         {
-           GameObject proyectil = Instantiate(prefabProyectil);
+            GameObject proyectil = Instantiate(prefabProyectil);
             proyectil.transform.position = transform.position;
         }
     }
@@ -76,11 +82,22 @@ public class Naujugador : MonoBehaviour
         Debug.Log("hola");
         if (objecteTocat.tag == "Numero")
         {
-            GameObject explosio = Instantiate(prefabExplosio);
-            explosio.transform.position = transform.position;
-            Destroy(gameObject);
+            videsNau--;
+            textvidesNau.text = "Vides: " + videsNau.ToString();
+
+
+            if (videsNau <= 0)
+            {
+                GameObject explosio = Instantiate(prefabExplosio);
+                explosio.transform.position = transform.position;
+
+                SceneManager.LoadScene("PantallaResultat");
+
+                Destroy(gameObject);
+
+            }
         }
     }
-    
 
 }
+
